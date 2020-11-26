@@ -20,6 +20,7 @@
             justify-content: center;
             align-items: center;
             font-family: 'Courier New', Courier, monospace;
+            padding: 1.5em;
         }
     </style>
 </head>
@@ -42,7 +43,7 @@
             let minutesLeft = Math.floor((timeLeft / 60) % 60);
             let secondsLeft = Math.floor((timeLeft % 60));
 
-            target.innerHTML = `${daysLeft} days ${hoursLeft} hours ${minutesLeft} minutes ${secondsLeft} seconds`;
+            target.innerHTML = `${daysLeft}&nbsp;days ${hoursLeft}&nbsp;hours ${minutesLeft}&nbsp;minutes ${secondsLeft}&nbsp;seconds`;
 
             if(daysLeft === 0 && hoursLeft === 0 && minutesLeft == 0)
                 window.clearInterval(interval);

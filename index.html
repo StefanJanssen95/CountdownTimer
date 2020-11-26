@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timer</title>
+    <style>
+        *{
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body{
+            background-color: #1E1E1E;
+            color: #BADA55;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Courier New', Courier, monospace;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h1 id=time-left></h1>
+    </div>
+
+    <script>
+        const target = document.getElementById('time-left');
+        const date = new Date(Date.UTC(2020,10,26,16,00,00));
+        
+        const interval = window.setInterval(calculateCountdown, 1000);
+
+        function calculateCountdown() {
+            let timeLeft = +date - +new Date();
+            timeLeft /= 1000;
+            let daysLeft = Math.floor(timeLeft / (60 * 60 * 24));
+            let hoursLeft = Math.floor((timeLeft / (60 * 60)) % 24);
+            let minutesLeft = Math.floor((timeLeft / 60) % 60);
+            let secondsLeft = Math.floor((timeLeft % 60));
+
+            target.innerHTML = `${daysLeft} days ${hoursLeft} hours ${minutesLeft} minutes ${secondsLeft} seconds`;
+
+            if(daysLeft === 0 && hoursLeft === 0 && minutesLeft == 0)
+                window.clearInterval(interval);
+        }
+    </script>
+</body>
+</html>
